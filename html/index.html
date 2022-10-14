@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hyper Perk Staking </title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Hyper Perk Staking">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="canonical" href="https://www.hyperperk.com">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/favicons/mstile-144x144.png">
+    <meta name="msapplication-config" content="images/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-title" content="Hyper Perk">
+    <meta name="application-name" content="Hyper Perk Staking">
+    <meta name="title" content="Hyper Perk - DeFi">
+    <meta name="description" content="Hyper Perk is a community platform that automates token marketing and engagement">
+    <meta property="og:title" content="Hyper Perk - All your token are belong to us">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Hyper Perk is a community platform that automates token marketing and engagement">
+    <meta property="og:url" content="https://www.hyperperk.com">
+    <meta property="og:site_name" content="Stake">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Hyper Perk - All your token are belong to us">
+    <meta property="twitter:description" content="Hyper Perk is a token community portal that brings utility to your token with our library of smart contracts and dApps">
+    <meta property="twitter:site" content="@HyperPerk">
+    <meta property="twitter:creator" content="@HyperPerk">
+    <meta property="twitter:url" content="https://www.hyperperk.com">
+    <link rel="stylesheet" href="css/main.css?timestamp=1633611782810">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js?timestamp=1633611782810"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bignumber.js/8.0.2/bignumber.min.js?timestamp=1633611782810"></script>
+    <script src="https://unpkg.com/web3@1.3.1/dist/web3.min.js?timestamp=1633611782810"></script>
+    <script src="https://unpkg.com/web3modal@1.9.3/dist/index.js?timestamp=1633611782810"></script>
+    <script src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js?timestamp=1633611782810"></script>
+    <script src="https://unpkg.com/@walletconnect/web3-provider@1.3.1/dist/umd/index.min.js?timestamp=1633611782810"></script>
+  </head>
+  <body>
+    <div class="layout">
+      <main class="main main--flex main--biege">
+        <div class="container">
+          <h3>Test</h3>
+          <div class="embed-settings"> 
+            <div class="embed-settings-width"> 
+              <input type="range" id="width" name="width" min="100" max="1000" value="1000">
+              <label for="width">Change Width</label>
+            </div>
+            <div class="embed-settings-height"> 
+              <input type="range" id="height" name="height" min="100" max="800" value="450">
+              <label for="height">Change Height</label>
+            </div>
+            <div class="embed-settings-tokens">
+              <input type="radio" id="sword" name="token" value="0x99BB38c25711ac1915FD0E9781ddBC421Fc0f625" checked>
+              <label for="sword">SWORD Token</label>
+              <input type="radio" id="lp" name="token" value="0x5D592120FfA6d8FDE0Bf05a06A8c0A94a6377C62">
+              <label for="lp">Uniswap V2 LP</label>
+            </div>
+            <div class="embed-settings-background">
+              <input type="color" id="bg-color" name="bg-color" value="#ffffff">
+              <label for="bg-color">Change Background Color</label>
+            </div>
+            <div class="embed-settings-background">
+              <input type="color" id="text-color" name="text-color" value="#000000">
+              <label for="text-color">Change Text Color</label>
+            </div>
+            <div class="embed-settings-button">
+              <input type="color" id="btn-color" name="btn-color" value="#ff6616">
+              <label for="btn-color">Change Background Color</label>
+            </div>
+            <button class="btn btn-big" id="reload-frame">Reload Form</button>
+            <div class="embed-settings-example">Example
+              <div class="embed-settings-example-url"></div>
+            </div>
+          </div>
+          <div class="stake-embed"> </div>
+        </div>
+      </main>
+      <div class="popup-overlay" id="select_token" data-scroll-lock-scrollable>
+        <div class="popup popup--select-token">
+          <div class="popup__close js-popup-close"></div>
+          <div class="popup__title">
+            <h6>Select a Token</h6>
+          </div>
+          <div class="search-input">
+            <input type="text" placeholder="Search name or paste address">
+          </div>
+          <div class="swap-form-import__notice warning"></div>
+          <div class="common-bases">
+            <div class="common-bases__title">Common bases</div>
+            <div class="common-bases__items"><a class="base-token cb-item js-select-token" href="#" data-key="0x0000000000000000000000000000000000000000"><img src="images/eth.svg" alt=""><span class="ticker">ETH</span></a></div>
+          </div>
+          <div class="token-list" data-scroll-lock-scrollable><a class="base-token token-list__item js-select-token" href="#" data-key="0x0000000000000000000000000000000000000000"><img src="images/eth.svg" alt="">
+              <div class="token-list__item-name">
+                <div class="ticker">ETH</div>
+                <div class="descr">Ether</div>
+              </div></a></div>
+        </div>
+      </div>
+      <div class="popup-overlay" id="connect_wallet">
+        <div class="popup">
+          <div class="popup__close js-popup-close"></div>
+          <div class="popup__title">
+            <h6>Connect to a wallet</h6>
+          </div>
+          <div class="wallet-list" data-scroll-lock-scrollable><a class="wallet-list__item js-popup-open" href="#metamask"><img src="images/metamask.svg" alt=""><span>MetaMask</span></a><a class="wallet-list__item js-popup-open" href="#walletconnet"><img src="images/walletconnect.svg" alt=""><span>WalletConnect</span></a></div>
+          <div class="popup__about-wallets">New to Ethereum?<a href="#">Learn more about wallets</a></div>
+        </div>
+      </div>
+      <div class="popup-overlay" id="login_using">
+        <div class="popup">
+          <div class="popup__close js-popup-close"></div>
+          <div class="popup__title popup__title--using">
+            <h6>Login using <span id="wallet_name">MetaMask</span></h6><img id="wallet_logo" src="images/metamask.svg" alt="">
+          </div><a class="popup__back" href="#">
+            <svg width="17" height="18" fill="none" version="1.1" viewBox="0 0 17 18" xmlns="http://www.w3.org/2000/svg">
+              <path d="m17 8.8125h-15m-0.34375-0.53125 6.25 7.8125m-6.3125-6.6562 6.2812-8.125" stroke="#333" stroke-width="2"></path>
+            </svg></a>
+          <div class="popup__initializing">
+            <div class="initializing"><img src="images/ellipse.svg" alt=""><span>Initializing...</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="popup-overlay" id="confirm_swap">
+        <div class="popup popup--select-token">
+          <div class="popup__close js-popup-close"></div>
+          <div class="popup__title">
+            <h6>Confirm Swap</h6>
+          </div>
+          <div class="popup__body">
+            <div class="popup__body-token">
+              <div class="popup__body-token-left base-token"><img class="popup_from_img" src="images/eth.svg" alt=""><span class="popup_from_amount"></span></div>
+              <div class="popup__body-token-right popup_from_symbol"></div>
+            </div>
+            <div class="swap-form__input-divider">
+              <div class="input-divider js-input-swap">
+                <svg width="13" height="15" fill="none" version="1.1" viewBox="0 0 13 15" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m6.8333 0v14m-0.27528 0.089886 5.8334-4.6667m-5.2098 4.6723-5.8333-4.6667"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="popup__body-token">
+              <div class="popup__body-token-left base-token"><img class="popup_to_img" src="images/eth.svg" alt=""><span class="popup_to_amount"></span></div>
+              <div class="popup__body-token-right popup_to_symbol"></div>
+            </div>
+            <div class="popup__body-desc">Output is estimated. You will receive at least 45.0102 $PERK or the transaction will revert.</div>
+            <div class="popup__body-details">
+              <div class="popup__body-details-item">
+                <div class="popup__body-details-item-name">Price</div>
+                <div class="popup__body-details-item-value popup_price"></div>
+              </div>
+              <div class="popup__body-details-item">
+                <div class="popup__body-details-item-name">Minimum Received</div>
+                <div class="popup__body-details-item-value popup_min_received"></div>
+              </div>
+              <div class="popup__body-details-item">
+                <div class="popup__body-details-item-name">Price Impact</div>
+                <div class="popup__body-details-item-value popup_price_impact"></div>
+              </div>
+              <div class="popup__body-details-item">
+                <div class="popup__body-details-item-name">Liquidity Provider Fee</div>
+                <div class="popup__body-details-item-value popup_lp_fee"></div>
+              </div>
+            </div>
+            <button class="btn btn-big js-confirm-btn popup__body-btn" data-event-click="onConfirmSwap">Confirm Swap</button>
+          </div>
+        </div>
+      </div>
+      <div class="popup-overlay" id="pending_transaction">
+        <div class="popup">
+          <div class="popup__close js-popup-close"></div>
+          <div class="popup__pending">
+            <div class="popup__pending-spinner"> <img src="images/ellipse.svg" alt=""></div>
+            <div class="popup__pending-details">
+              <div class="popup__pending-details-title">Waiting For Confirmation</div>
+              <div class="popup__pending-details-info"></div>
+              <div class="popup__pending-details-note">Confirm this transaction in your wallet</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup-overlay" id="confirm_supply">
+        <div class="popup popup--select-token">
+          <div class="popup__close js-popup-close"></div>
+          <div class="popup__title">
+            <h6>Confirm Supply</h6>
+          </div>
+          <div class="popup__body">
+            <div class="popup__body-content"> 
+              <div class="popup__body-content-title">You will receive </div>
+              <div class="popup__body-content-reward"> <span class="popup__body-content-reward-amount"> </span><img class="popup__body-content-reward-token0"><img class="popup__body-content-reward-token1"></div>
+              <div class="popup__body-content-pool"> </div>
+            </div>
+            <div class="popup__body-desc">Output is estimated. If the price changes by more than 0.5% your transaction will revert.</div>
+            <div class="popup__body-details">
+              <div class="popup__body-details-item">
+                <div class="popup__body-details-item-name token0"></div>
+                <div class="popup__body-details-item-value token0"> <img class="popup__body-details-item-value-image"><span class="popup__body-details-item-value-text"></span></div>
+              </div>
+              <div class="popup__body-details-desc"></div>
+              <div class="popup__body-details-item">
+                <div class="popup__body-details-item-name token1"></div>
+                <div class="popup__body-details-item-value token1"><img class="popup__body-details-item-value-image"><span class="popup__body-details-item-value-text"></span></div>
+              </div>
+              <div class="popup__body-details-item rates">
+                <div class="popup__body-details-item-name">Rates</div>
+                <div class="popup__body-details-item-value rates"></div>
+              </div>
+              <div class="popup__body-details-item">
+                <div class="popup__body-details-item-name">Share of Pool:</div>
+                <div class="popup__body-details-item-value share-of-pool"></div>
+              </div>
+            </div>
+            <button class="btn btn-big js-confirm-btn popup__body-btn" data-event-click="onConfirmSupply">Confirm Supply</button>
+          </div>
+        </div>
+      </div>
+      <div class="popup-overlay" id="pending_supply">
+        <div class="popup">
+          <div class="popup__close js-popup-close"></div>
+          <div class="popup__pending">
+            <div class="popup__pending-spinner"> <img src="images/ellipse.svg" alt=""></div>
+            <div class="popup__pending-details">
+              <div class="popup__pending-details-title">Waiting For Confirmation</div>
+              <div class="popup__pending-details-info"></div>
+              <div class="popup__pending-details-note">Confirm this transaction in your wallet</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup-overlay" id="transaction_status">
+        <div class="popup">
+          <div class="popup__close js-popup-close"></div>
+          <div class="popup__transaction"><img class="popup__transaction-img" src="images/swap/error.svg" alt="">
+            <div class="popup__transaction-title">Transaction Submitted</div>
+            <button class="btn btn-big popup__transaction-btn" data-event-click="onModalClose"></button>
+          </div>
+        </div>
+      </div>
+      <div class="popup-overlay" id="stake_asset" data-scroll-lock-scrollable>
+        <form class="popup" id="stake" data-submit="onStake">
+          <div class="popup__close js-popup-close"></div>
+          <div class="popup__title">
+            <h6 id="stake_dialog_title"></h6>
+          </div>
+          <div class="search-input">
+            <input id="available_amount" type="number" placeholder="0" data-event-input="onStakeInput" step="0.000000000000000001">
+            <div class="max-input"><a class="js-input-max-balance" href="#" data-event-click="onStakeMaxAmount">MAX</a></div>
+          </div>
+          <div class="available-balance">
+            <div class="available-balance-title">Available Balance </div>
+            <div class="available-balance-value"></div>
+          </div>
+          <input id="current_pool_id" type="hidden" name="current_pool_id">
+          <input id="current_stake_type" type="hidden" name="current_stake_type">
+          <input id="current_pool_pair_name" type="hidden" name="current_pool_pair_name">
+          <input id="current_pool_pair_max" type="hidden" name="current_pool_pair_max">
+          <input id="current_pool_pair_current" type="hidden" name="current_pool_pair_current"><span class="alert-error" id="stake_asset_alert"></span>
+          <button class="btn btn-big js-confirm-btn popup__body-btn">Confirm</button>
+        </form>
+      </div>
+      <div class="popup-overlay" id="confirm_remove">
+        <div class="popup popup--select-token">
+          <div class="popup__close js-popup-close"></div>
+          <div class="popup__title">
+            <h6>You will receive</h6>
+          </div>
+          <div class="popup__remove">
+            <div class="popup__remove-token popup__remove-token0"></div>
+            <div class="popup__remove-plus">+</div>
+            <div class="popup__remove-token popup__remove-token1"></div>
+            <div class="popup__remove-note">Output is estimated. If the price changes by more than 1% your transaction will revert.</div>
+            <div class="popup__remove-burn"></div>
+            <div class="popup__remove-price"></div>
+            <button class="btn btn-big popup__body-btn" data-event-click="onConfirmRemove">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/index.js?timestamp=1633611782810"></script>
+    <script src="js/constants.js?timestamp=1633611782810"></script>
+    <script src="js/data.lib.js?timestamp=1633611782810"></script>
+    <script src="js/pool.js?timestamp=1633611782810"></script>
+    <script src="js/stake.js?timestamp=1633611782810"></script>
+  </body>
+</html>

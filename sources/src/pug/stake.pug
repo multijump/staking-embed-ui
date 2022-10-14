@@ -1,0 +1,40 @@
+extends base/_layout
+block head
+    title Hyper Perk Staking 
+block mainClass
+    - var mainClass = 'main--biege'
+block page
+    div#stake.stake
+        .stake-embed 
+            //- form(action="#" data-submit="disabled").stake-embed-form
+            //-     .stake-embed-form__title
+            //-         h6 
+            //-     .stake-embed-form__subtitle
+            //-         h6 Earn SHARD
+            //-         .stake-embed-form__subtitle--event
+            //-     .stake-embed-form__info
+            //-         .stake-embed-form__info-earned
+            //-         .stake-embed-form__info-staked
+            //-         .stake-embed-form__info-balance
+            //-         .stake-embed-form__info-stakable
+            //-     .stake-embed-form__notice
+            //-     .stake-embed-form__inputs
+            //-         .stake-embed-form__input
+            //-             .stake-embed-form__input-header
+            //-                 .stake-embed-form__input-header-title SHARD EARNED
+            //-             .stake-embed-form__input-row.stake-embed-form__earned(data-input="claim-amount")
+            //-                 input#stake-earned-amount(placeholder="0.00" data-event-input="onInputAmount:earnedAmount" disabled=true)
+            //-                 button.btn.btn-small.btn-harvest(href="#") Claim
+            //-         .stake-embed-form__input
+            //-             .stake-embed-form__input-header
+            //-                 div#stake-token-label.stake-embed-form__input-header-title 
+            //-             .stake-embed-form__input-row.stake-embed-form__max-stake(data-input="amount")
+            //-                 input#stake-amount(placeholder="0.00" data-event-input="onInputAmount:amount")
+            //-                 button.btn.btn-max-amount(href="#") MAX
+            //-     .btn-add-pool
+            //-         button.btn.btn-big.btn-approve-staking(href="#") Approve Staking
+            //-         button.btn.btn-big.btn-approve-staking(href="#stake_asset") Stake
+            //-         button.btn.btn-big.btn-approve-staking(href="#unstake_asset") UnStake
+
+        block scripts
+            script(src="js/stake.js")

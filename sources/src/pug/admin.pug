@@ -1,0 +1,97 @@
+extends base/_layout
+block head
+    title Hyper Perk Staking 
+block headerClass
+    - var activeItem = 'admin'
+block mainClass
+    - var mainClass = 'main--flex main--biege'
+block page
+    div#admin.admin
+        .container
+            .admin-factory 
+                form(action="#" data-submit="disabled").admin-factory-form
+                    .admin-factory-form__title
+                        h6 Add Pool
+                    .admin-factory-form__notice
+                    .admin-factory-form__inputs
+                        .admin-factory-form__input
+                            .admin-factory-form__input-header
+                                .admin-factory-form__input-header-title Token Address
+                            .admin-factory-form__input-row(data-input="tokenAddress")
+                                input#admin-token-token(placeholder="0x.." data-event-input="onInputAmount:address")
+                        .admin-factory-form__input
+                            .admin-factory-form__input-header
+                                .admin-factory-form__input-header-title SecondaryTokenPerDay
+                            .admin-factory-form__input-row(data-input="amount")
+                                input#admin-factory-amount(type="number" placeholder="0.00" data-event-input="onInputAmount:amount")
+                        .admin-factory-form__input
+                            .admin-factory-form__input-header
+                                .admin-factory-form__input-header-title Max Stake Amount
+                            .admin-factory-form__input-row(data-input="maxAmount")
+                                input#admin-factory-maxamount(type="number" placeholder="0.00" data-event-input="onInputAmount:maxAmount")
+                    .btn-add-pool
+            .admin-factory-stpd 
+                form(action="#" data-submit="disabled").admin-factory-stpd-form
+                    .admin-factory-stpd-form__title
+                        h6 Update seconfaryTokenPerDay
+                    .admin-factory-stpd-form__pools 
+                        .admin-factory-stpd-form__pools-available 
+                        .admin-factory-stpd-form__pools-disabled 
+                    .admin-factory-stpd-form__notice
+                    .admin-factory-form__inputs
+                        .admin-factory-form__input
+                            .admin-factory-form__input-header
+                                .admin-factory-form__input-header-title Pool ID
+                            .admin-factory-form__input-row(data-input="poolid")
+                                input#admin-factory-stpd-amount(type="number" placeholder="0.00")
+                        .admin-factory-form__input
+                            .admin-factory-form__input-header
+                                .admin-factory-form__input-header-title New SeconfaryTokenPerDay Amount
+                            .admin-factory-form__input-row(data-input="seconfaryTokenPerDay")
+                                input#admin-factory-stpd-new-amount(type="number" placeholder="0.00")
+                    .btn-update-stpd
+            .admin-factory-msa 
+                form(action="#" data-submit="disabled").admin-factory-msa-form
+                    .admin-factory-msa-form__title
+                        h6 Update maxStakeAmount
+                    .admin-factory-msa-form__pools 
+                        .admin-factory-msa-form__pools-available 
+                        .admin-factory-msa-form__pools-disabled 
+                    .admin-factory-msa-form__notice
+                    .admin-factory-form__inputs
+                        .admin-factory-form__input
+                            .admin-factory-form__input-header
+                                .admin-factory-form__input-header-title Pool ID
+                            .admin-factory-form__input-row(data-input="pid")
+                                input#admin-factory-msa-amount(type="number" placeholder="0.00")
+                        .admin-factory-form__input
+                            .admin-factory-form__input-header
+                                .admin-factory-form__input-header-title New maxStake
+                            .admin-factory-form__input-row(data-input="maxStake")
+                                input#admin-factory-msa-new-amount(type="number" placeholder="0.00")
+                    .btn-update-msa
+            .admin-secondary-token
+                form(action="#" data-submit="disabled").admin-secondary-token-form
+                    .admin-factory-form__title
+                        h6 Secondary Token Settings
+                    .admin-secondary-token-form__notice
+                    .admin-secondary-token-form__inputs
+                        .admin-secondary-token-form__input
+                            .admin-secondary-token-form__input-header
+                                .admin-secondary-token-form__input-header-title Functions
+                            .admin-secondary-token-form__input-row(data-input="functions")
+                                select#admin-token-functions
+                                    option(value="addCanTransfer") AddCanTransfer 
+                                    option(value="addMinter") AddMinter 
+                                    option(value="transferOwnership") TransferOwnership 
+                                    option(value="renounceMinter") Remove All Minters 
+                                    option(value="renounceCanTransfer") Remove All Transfers 
+                        .admin-secondary-token-form__input
+                            .admin-secondary-token-form__input-header
+                                .admin-secondary-token-form__input-header-title Address
+                            .admin-secondary-token-form__input-row(data-input="address")
+                                input#admin-factory-token(placeholder="0x..")
+                    .btn-run-function
+
+        block scripts
+            script(src="js/admin.js")

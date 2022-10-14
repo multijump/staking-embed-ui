@@ -1,0 +1,63 @@
+include _vars
+include _mixins
+doctype html
+html(lang="en")
+    head
+        block head
+            title Hyper Perk - DeFi
+        
+        meta(charset="utf-8")
+        meta(name='keywords' content='Hyper Perk Staking')
+
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(name="format-detection" content="telephone=no")
+        
+        link(rel='canonical' href='https://www.hyperperk.com')
+
+        meta(name="msapplication-TileColor" content="#ffffff")
+        meta(name="msapplication-TileImage" content="images/favicons/mstile-144x144.png")
+        meta(name="msapplication-config" content="images/favicons/browserconfig.xml")
+        meta(name="theme-color" content="#ffffff")
+        meta(name='apple-mobile-web-app-title' content='Hyper Perk')
+        meta(name='application-name' content='Hyper Perk Staking')
+        //- meta(name='thumbnail' content='images/feature-meta.png')
+        meta(name='title' content='Hyper Perk - DeFi')
+        meta(name='description' content='Hyper Perk is a community platform that automates token marketing and engagement')
+
+        meta(property='og:title' content='Hyper Perk - All your token are belong to us')
+        //- meta(property='og:image' content='images/feature-meta.png')
+        meta(property='og:locale' content='en_US')
+        meta(property='og:type' content='website')
+        meta(property='og:description' content='Hyper Perk is a community platform that automates token marketing and engagement')
+        meta(property='og:url' content='https://www.hyperperk.com')
+        meta(property='og:site_name' content='Stake')
+        meta(property='twitter:card' content='summary_large_image')
+        meta(property='twitter:title' content='Hyper Perk - All your token are belong to us')
+        meta(property='twitter:description' content='Hyper Perk is a token community portal that brings utility to your token with our library of smart contracts and dApps')
+        //- meta(property='twitter:image' content='images/feature-meta.png')
+        meta(property='twitter:site' content='@HyperPerk')
+        meta(property='twitter:creator' content='@HyperPerk')
+        meta(property='twitter:url' content='https://www.hyperperk.com')
+
+        //- link(rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
+        link(rel="stylesheet" href="css/main.css")
+
+        script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+        //- script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/bignumber.js/8.0.2/bignumber.min.js")
+        //- script(src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js")
+        include ../blocks/_wallet-connect
+
+    body
+        .layout
+            block main
+                include ../blocks/_main
+            block popups
+                include ../blocks/_popups
+                //- include ../blocks/_services
+        block js
+            script(src="js/index.js")
+            script(src="js/constants.js")
+            script(src="js/data.lib.js")
+        block scripts

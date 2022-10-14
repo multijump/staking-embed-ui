@@ -1,0 +1,40 @@
+extends base/_layout
+block head
+    title Hyper Perk Staking 
+block headerClass
+    - var activeItem = 'farm'
+block mainClass
+    - var mainClass = 'main--flex main--biege'
+block page
+    .container
+        h3 Test
+        .embed-settings 
+            .embed-settings-width 
+                input(type="range" id="width" name="width" min="100" max="1000" value="1000")
+                label( for="width") Change Width
+            .embed-settings-height 
+                input(type="range" id="height" name="height" min="100" max="800" value="450")
+                label( for="height") Change Height
+            .embed-settings-tokens
+                input(type="radio" id="sword" name="token" value="0x99BB38c25711ac1915FD0E9781ddBC421Fc0f625" checked)
+                label( for="sword") SWORD Token
+                input(type="radio" id="lp" name="token" value="0x5D592120FfA6d8FDE0Bf05a06A8c0A94a6377C62")
+                label( for="lp") Uniswap V2 LP
+            .embed-settings-background
+                input(type="color" id="bg-color" name="bg-color" value="#ffffff")
+                label( for="bg-color") Change Background Color
+            .embed-settings-background
+                input(type="color" id="text-color" name="text-color" value="#000000")
+                label( for="text-color") Change Text Color
+            .embed-settings-button
+                input(type="color" id="btn-color" name="btn-color" value="#ff6616")
+                label( for="btn-color") Change Background Color
+            button(id="reload-frame" class="btn btn-big") Reload Form
+            .embed-settings-example Example
+                .embed-settings-example-url
+        .stake-embed 
+            
+
+block scripts
+    script(src="js/pool.js")
+    script(src="js/stake.js")
